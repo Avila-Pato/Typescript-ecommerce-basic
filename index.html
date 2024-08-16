@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Vite + TS</title>
+  </head>
+  <header class="p-4 border-b border-gray-300">
+    <ul class="list-none m-0 p-0" 
+    id="cart-list">
+      <template 
+      id="cart-template">
+        <li class="flex justify-between items-center py-2">
+          <p class="truncate flex-1 text-lg font-medium" 
+          data-cart="title">Titulo del producto
+        </p>
+          <div class="flex items-center gap-2">
+            <button class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600" data-cart="increment">+</button>
+            <span class="text-lg font-semibold" data-cart="quantity">2</span>
+            <button class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600" data-cart="decrement">-</button>
+          </div>
+          <p class="text-gray-700 text-lg font-medium ml-4" 
+          id="cart-total" data-cart="price">$400</p>
+        </li>
+      </template>
+    </ul>
+    <p class="text-right" 
+    id="cart-total">Total: $400</p>
+  </header>
+  <body>
+
+    <h1 class="text-center my-3 text-2xl font-bold">Products</h1>
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4" id="product-list">
+      <template id="product-template">
+        <article class="border rounded-md overflow-hidden shadow-lg">
+          <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" 
+          alt="Product Image"
+          class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <h2 class="truncate text-lg font-semibold">Product Title</h2>
+            <p class="text-gray-700">Price: <span class="font-bold">$30</span></p>
+            <button class="mt-4 w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-md">Add to Cart</button>
+          </div>
+        </article>
+      </template>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

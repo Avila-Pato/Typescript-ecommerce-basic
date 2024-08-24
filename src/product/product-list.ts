@@ -9,7 +9,12 @@ const getProduct = async (): Promise<Product[]> => {
 }
 
 // 2. Renderizar productos en el DOM
+
+
+
+
 export const renderProductList = async () => {
+  
   const products = await getProduct();
 
   const $productList = document.getElementById(
@@ -24,6 +29,7 @@ export const renderProductList = async () => {
     $productList.appendChild(clone);
   });
 };
+
 
 // 2.1 Crear la tarjeta con el template HTML
 const createProductCard = (
@@ -40,5 +46,6 @@ const createProductCard = (
     addToCart({ title, price, id });
   });
 
-  return clone;
+    return clone;
 };
+

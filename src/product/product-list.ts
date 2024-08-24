@@ -10,9 +10,6 @@ const getProduct = async (): Promise<Product[]> => {
 
 // 2. Renderizar productos en el DOM
 
-
-
-
 export const renderProductList = async () => {
   
   const products = await getProduct();
@@ -38,14 +35,33 @@ const createProductCard = (
 ) => {
   const { title, id, image, price } = product;
 
+  // Clonar el contenido del template
   const clone = $productTemplate.content.cloneNode(true) as HTMLElement;
-  clone.querySelector("img")!.src = image;
-  clone.querySelector("h2")!.textContent = title;
-  clone.querySelector("p span")!.textContent = `$${price}`;
-  clone.querySelector("button")!.addEventListener("click", () => {
+
+  // Configurar la imagen
+  const imgElement = clone.querySelector("img")!;
+  imgElement.src = image;
+
+  // Configurar el título
+  const titleElement = clone.querySelector("h2")!;
+  titleElement.textContent = title;
+
+  // Formatear el precio en pesos chilenos
+  const formattedPrice = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+  }).format(price);
+  
+  // Configurar el precio
+  const priceElement = clone.querySelector("p span")!;
+  priceElement.textContent = formattedPrice.slice(0, 5);
+
+  // Configurar el botón para agregar al carrito
+  const buttonElement = clone.querySelector("button")!;
+  buttonElement.addEventListener("click", () => {
     addToCart({ title, price, id });
   });
 
-    return clone;
+  return clone;
 };
 

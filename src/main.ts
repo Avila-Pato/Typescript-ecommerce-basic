@@ -1,15 +1,15 @@
 import './style.css';
+import { renderProductList } from './product/product-list';
+import { renderCartList } from './cart/cart-list';
+import { initializeSearch } from './SearchProduct/searchProduct'; // Importamos la función de inicialización de búsqueda
 
 // Agregamos un elemento para mostrar el mensaje de "Cargando..."
 const loadingMessage = document.createElement('div');
 loadingMessage.innerHTML = 'Cargando...';
 document.body.appendChild(loadingMessage);
 
-// 3. Renderizar la lista de productos
-import { renderProductList } from './product/product-list';
-import { renderCartList } from './cart/cart-list';
-
 // Renderizamos la lista de productos y la lista de carrito de compras
+initializeSearch();
 renderProductList();
 renderCartList();
 
@@ -17,3 +17,6 @@ renderCartList();
 setTimeout(() => {
   loadingMessage.style.display = 'none';
 }, 5000);
+
+// Inicializamos la funcionalidad de búsqueda
+

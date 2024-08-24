@@ -1,57 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Vite + TS</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
 
-  <header
-
-  class="p-4 border-b border-gray-300">
-    <ul class="list-none m-0 p-0" 
-    id="cart-list">
-      <template 
-      id="cart-template">
-        <li class="flex justify-between items-center py-2">
-          <p class="truncate flex-1 text-lg font-medium" 
-          data-cart="title">Titulo del producto
-        </p>
-          <div class="flex items-center gap-2">
-            <button class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600" data-cart="increment">+</button>
-            <span class="text-lg font-semibold" data-cart="quantity">2</span>
-            <button class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600" data-cart="decrement">-</button>
-          </div>
-          <p class="text-gray-700 text-lg font-medium ml-4" 
-          id="cart-total" data-cart="price">$400</p>
-        </li>
-      </template>
-    </ul>
-    <p class="text-right" 
-    id="cart-total">Total: $400</p>
+<body class="font-sans antialiased bg-gray-100">
+  <header class="bg-gray-300 border-b border-gray-300 shadow-sm p-4">
+    <div class="flex items-center justify-between">
+      <ul id="cart-list" class="m-0 p-0">
+        <template id="cart-template">
+          <li class="flex items-center justify-between py-2">
+            <p class="truncate text-lg font-medium flex-1" data-cart="title">Product Title</p>
+            <div class="flex items-center space-x-2">
+              <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded" data-cart="increment">+</button>
+              <span class="text-lg font-semibold" data-cart="quantity">2</span>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded" data-cart="decrement">-</button>
+            </div>
+            <p class="text-gray-700 text-lg font-medium ml-4" id="cart-total" data-cart="price">$400</p>
+          </li>
+        </template>
+      </ul>
+      <p id="cart-total" class="text-right">Total: $400</p>
+    </div>
   </header>
-  <body >
-   
 
-    <h1 class="text-center my-3 text-2xl font-bold">Products</h1>
-    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4" id="product-list">
-      <template id="product-template">
-        <article class="border rounded-md overflow-hidden shadow-lg">
-          <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" 
-          alt="Product Image"
-          class="w-full h-48 object-cover"
-          />
-          <div class="p-4">
-            <h2 class="truncate text-lg font-semibold">Product Title</h2>
-            <p class="text-gray-700">Price: <span class="font-bold">$30</span></p>
-            <button class="mt-4 w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-md">Add to Cart</button>
-          </div>
-        </article>
-      </template>
-    </main>
-    <script type="module" src="/src/main.ts"></script>
-    
-  </body>
+  <div class="search-container p-4">
+    <input type="text" id="search-input" placeholder="Search products..." class="w-2/3 p-2 border rounded" />
+    <button id="search-button" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded ml-2">Search</button>
+  </div>
+
+  <h1 class="text-center my-3 text-2xl font-bold">Products</h1>
+
+  <main id="product-list" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <template id="product-template">
+      <article class="border rounded-md overflow-hidden shadow-lg">
+        <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="Product Image" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h2 class="truncate text-lg font-semibold">Product Title</h2>
+          <p class="text-gray-700">Price: <span class="font-bold">$30</span></p>
+          <button class="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-md mt-4">Add to Cart</button>
+        </div>
+      </article>
+    </template>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>

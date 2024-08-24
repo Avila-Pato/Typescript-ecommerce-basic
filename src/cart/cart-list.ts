@@ -21,7 +21,7 @@ export const renderCartList = () => {
     if(cartArray.length === 0) {
         $cartTotal.innerHTML = '<p>El carrito esta vacio</p>';
     }else{
-        $cartTotal.textContent = `Total: $${getTotal().toFixed(2)}`;
+        $cartTotal.textContent = `Total: $${getTotal().toFixed(3)}`;
     }
 }
 const createCartItem = (cartItem: CartItem, $cartTemplate: HTMLTemplateElement) => {
